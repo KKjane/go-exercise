@@ -33,7 +33,7 @@ func index(responseWriter http.ResponseWriter, request *http.Request) {
 func handleRequests() {
 	mainRouter := mux.NewRouter().StrictSlash(true)
 	mainRouter.HandleFunc("/", index)
-	mainRouter.HandleFunc("/persons", returnPersons)
+	mainRouter.HandleFunc("/persons", returnPersons).Methods("GET")
 	log.Fatal(http.ListenAndServe(":8081", mainRouter))
 }
 
